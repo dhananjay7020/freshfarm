@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmFresh - Online Farmer's Marketplace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        .btn-outline {
+            background-color: white;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .features {
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background-color: white;
+        }
+        
+        .feature-card {
+            width: 300px;
+            margin: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .categories {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .categories h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2e7d32;
+        }
+        
+        .category-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            width: 280px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .category-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-info {
+            padding: 1.8rem;
+            text-align: center;
+        }
+        
+        .category-info h3 {
+            margin-bottom: 1rem;
+            color: #2e7d32;
+            font-size: 1.4rem;
+        }
+        
+        .category-info p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .farmer-login {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #e8f5e9;
+        }
+        
+        .farmer-login h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #2e7d32;
+        }
+        
+        .farmer-login p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            width: 300px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #4CAF50;
+        }
+        
+        .footer-section ul li i {
+            margin-right: 0.5rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .copyright {
+            border-top: 1px solid #555;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">FarmFresh</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Farmers</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="btn">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Farm Fresh Produce Direct to Your Doorstep</h1>
+        <p>Connecting you with local farmers for the freshest vegetables, fruits, grains and more. Support local agriculture while enjoying premium quality.</p>
+        <div>
+            <a href="login c .html" class="btn">Shop Now</a>
+            <a href="farmer login.html" class="btn btn-outline" style="margin-left: 1rem;">Farmer Login</a>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-truck"></i>
+            <h3>Fast Delivery</h3>
+            <p>Get your fresh produce delivered within 24 hours of harvest, straight from farm to table.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-leaf"></i>
+            <h3>100% Organic</h3>
+            <p>Chemical-free farming practices that are good for you and the environment.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-rupee-sign"></i>
+            <h3>Fair Prices</h3>
+            <p>Better income for farmers and affordable prices for you by eliminating middlemen.</p>
+        </div>
+    </section>
+    
+    <section class="categories">
+        <h2>Categories</h2>
+        <div class="category-container">
+            <a href="vegetable.html" class="category-card">
+                <div class="category-img" style="background-image: url('https://media.istockphoto.com/id/1280856062/photo/variety-of-fresh-organic-vegetables-and-fruits-in-the-garden.jpg?s=612x612&w=0&k=20&c=KoF5Ue-g3wO3vXPgLw9e2Qzf498Yow7WGXMSCNz7O60=')"></div>
+                <div class="category-info">
+                    <h3>Vegetables</h3>
+                    <p>Fresh, seasonal vegetables grown with care by our network of local farmers. From leafy greens to root vegetables, we offer the best of each season.</p>
+                </div>
+            </a>
+            <a href="fruits.html" class="category-card">
+                <div class="category-img" style="background-image: url('https://media.istockphoto.com/id/529664572/photo/fruit-background.jpg?s=612x612&w=0&k=20&c=K7V0rVCGj8tvluXDqxJgu0AdMKF8axP0A15P-8Ksh3I=')"></div>
+                <div class="category-info">
+                    <h3>Fruits</h3>
+                    <p>A colorful variety of seasonal fruits harvested at perfect ripeness. Enjoy nature's sweetness with our selection of tropical and temperate fruits.</p>
+                </div>
+            </a>
+            <a href="#" class="category-card">
+                <div class="category-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBQFLOvVnew6ZRee2d70xxSjqUt-886P3AQw&s')"></div>
+                <div class="category-info">
+                    <h3>Grains & Pulses</h3>
+                    <p>Nutritious staples grown using sustainable methods. Our selection includes various rice varieties, wheat, millets, lentils and more.</p>
+                </div>
+            </a>
+            <a href="#" class="category-card">
+                <div class="category-img" style="background-image: url('https://texascooppower.com/wp-content/uploads/2021/02/wildflowers-cover-2.jpg')"></div>
+                <div class="category-info">
+                    <h3>Flowers</h3>
+                    <p>Fresh cut flowers and decorative plants for all occasions. Brighten your home with our seasonal selection of blooms.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <section class="farmer-login">
+        <h2>Are You a Farmer?</h2>
+        <p>Join our platform to sell your produce directly to customers and get better prices for your harvest. We provide the tools and marketplace to help you grow your farming business.</p>
+        <a href="farmer login.html" class="btn">Farmer Login</a>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About FarmFresh</h3>
+                <p>Bridging the gap between farmers and consumers to create a sustainable agricultural ecosystem with fair prices and fresh produce.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Products</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Become a Seller</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> 0000 000 000</li>
+                    <li><i class="fas fa-envelope"></i> contact@farmfresh.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Chh Sambhaji Nagar, Maharashtra</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 FarmFresh. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
